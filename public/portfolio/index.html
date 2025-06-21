@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio Dashboard</title>
+
+    <!-- Tailwind CDN for quick styling; remove if you compile locally -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Chart.js CDN for visualisations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Custom styles (optional; most layout handled by Tailwind) -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="min-h-screen bg-gray-50 flex flex-col">
+    <!-- Header -->
+    <header class="bg-white shadow p-4 flex items-center justify-between">
+      <h1 class="text-xl font-semibold">📈 Portfolio Manager</h1>
+      <span id="connection-status" class="text-sm text-gray-500">offline</span>
+    </header>
+
+    <!-- Content -->
+    <main class="flex-1 p-4 grid gap-6 lg:grid-cols-2">
+      <!-- Positions table -->
+      <section>
+        <h2 class="mb-2 font-medium">Current Positions</h2>
+        <div class="overflow-x-auto">
+          <table id="positions-table" class="min-w-full text-sm text-left">
+            <thead class="bg-gray-200">
+              <tr>
+                <th class="px-3 py-2">Ticker</th>
+                <th class="px-3 py-2">Qty</th>
+                <th class="px-3 py-2">Price</th>
+                <th class="px-3 py-2">Value</th>
+                <th class="px-3 py-2">P/L %</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y" id="positions-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Equity curve chart -->
+      <section>
+        <h2 class="mb-2 font-medium">Equity Curve</h2>
+        <canvas id="equity-chart" height="200"></canvas>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center text-xs text-gray-400 py-2">
+      &copy; <span id="year"></span> DIY Portfolio
+    </footer>
+
+    <!-- App logic -->
+    <script src="app.js"></script>
+  </body>
+</html>
